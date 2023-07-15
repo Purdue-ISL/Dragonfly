@@ -2,7 +2,7 @@
 This dir contains modified Pano scripts to generate static *PSPNR* (*SPSPNR*)
 ## Prerequisites
 * [MATLAB](https://www.mathworks.com/help/install/)
-  * Make sure you install Image Processing Toolbox 
+  * Make sure you check Image Processing Toolbox 
 * [folly](https://github.com/facebook/folly)
 
 ## Video Preparation
