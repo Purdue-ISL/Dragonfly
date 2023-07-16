@@ -30,7 +30,7 @@ Before we generate *SPPNR* values, there are couple of code changes you may want
    * lines 24-25  →  width and height of the video
    * line 98  → KeySet = { … } —> list of quantization parameters (i.e., video qualities)
    * line 99  → ValueSet = [ … ]—> indices of video qualities
-   * Throughout the script, "17" and "50" quantization values correspond to highest and lowest quality qps. Please change accordingly
+   * Throughout the script, "17" and "50" quantization values correspond to highest and lowest quality qps. Please be mindful to change these accordingly
 ### Run
 To generate the *SPRPNR* for all tiles and all videos please run:
 ```
