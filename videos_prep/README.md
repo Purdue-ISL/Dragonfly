@@ -25,6 +25,7 @@ First, lets walk through each script, what its purpose, and what changes you mig
 1. run the command `python3 run.py <video_dir>`
 ### output
 This will generate <video_id>_data directory that contains:
+```
 <video_id>_data/
                ├── org_raw_tiles: contains the tiles raw videos (feel free to detelte to save on storage)
                ├── psnr_avg_QP<qp>.txt: contains the avg psnr per tile per chunk.
@@ -32,4 +33,4 @@ This will generate <video_id>_data directory that contains:
                ├── QP<qp>: directory per quality
                    ├── <tile_id>: directory per tile
                        ├── <chunk_id>.h264: tile-chunk
-
+```
