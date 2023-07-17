@@ -23,7 +23,7 @@ First, lets walk through each script, what its purpose, and what changes you mig
 1. Please place all your videos in a single directory
 1. Rename videos with corresponding ids instead (**Recommended**)
 1. run the command `python3 run.py <video_dir>`
-### output
+### Output
 This will generate <video_id>_data directory that contains:
 ```
 <video_id>_data/
