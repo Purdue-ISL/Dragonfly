@@ -1,6 +1,8 @@
 # Dragonfly Image
 
-Docker image to build and evaluate Dragonfly, a new 360º video streaming system.This accompanies the paper "Dragonfly: Higher Perceptual Quality For Continuous 360° Video Playback". Ehab Ghabashneh, Chandan Bothra, Ramesh Govindan, Antonio Ortega, and Sanjay Rao. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM ’23, New York, NY, USA. If you use this artifact, please cite: 
+Docker image to build and evaluate Dragonfly, a new 360º video streaming system.
+
+This accompanies the paper *"Dragonfly: Higher Perceptual Quality For Continuous 360° Video Playback"*. Ehab Ghabashneh, Chandan Bothra, Ramesh Govindan, Antonio Ortega, and Sanjay Rao. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM ’23, New York, NY, USA. If you use this artifact, please cite: 
 
 ```
 @inproceedings{Ghabashneh_Dragonfly_2023,
@@ -15,7 +17,7 @@ Docker image to build and evaluate Dragonfly, a new 360º video streaming system
 
 ```
 
-## Image info
+## Image Info
 
 This image includes:
 
@@ -32,7 +34,7 @@ This image includes:
   - For Ubuntu users: run `sudo apt install docker.io && sudo snap install docker`
   - For Windows users: please refer to [Docker documentation](https://docs.docker.com/desktop/install/windows-install/#install-docker-desktop-on-windows)
 
-## Download And Run The Image
+## Download and Run Docker Image
 
 - To **Download** the latest Dragonfly image, run the command below or you can refer to [this dockerhub repo](https://hub.docker.com/r/eghabash/dfly/tags) to track/download old versions of the image
   ```
@@ -47,8 +49,9 @@ This image includes:
 * If you are using remote linux machine, we recommend running the image inside [screen](https://linux.die.net/man/1/screen) shell
 * In case of unresposive shell, you can run `docker exec -it <container-id> bash` to gain access back to docker's shell. To retrieve `<container-id>`, please run `docker ps` command
 
-## Build And Run Dragonfly
+## Build and Run Dragonfly
 
+### Build dependencies and source code 
 Once you run the image, then:
 
 - Run `cd home/dfly && ./bash.sh` to (i) download and build all dependecies, and (ii) build Dragonfly code. Please note that **dfly password** is `1` (long live security bugs!!)
