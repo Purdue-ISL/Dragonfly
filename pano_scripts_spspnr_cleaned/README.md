@@ -4,6 +4,7 @@ This dir contains modified Pano scripts to generate static *PSPNR* (*SPSPNR*)
 * [MATLAB](https://www.mathworks.com/help/install/)
   * Make sure you check Image Processing Toolbox 
 * [folly](https://github.com/facebook/folly)
+* [FFMPEG](https://ffmpeg.org)
 
 ## Video Preparation
 First, we need to cut the video into 1 second chunks. For this: 
