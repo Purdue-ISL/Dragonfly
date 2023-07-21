@@ -27,7 +27,7 @@ This image includes:
   ```
 - To **Run** the image, run the following command
   ```
-  docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly:0.1
+  docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly
   ```
   Couple of notes,
 
@@ -63,6 +63,8 @@ To reproduce evaluation results from [our paper](https://doi.org/10.1145/3603269
   **Full dataset**: &ensp;&nbsp; `python3 run_eval_ablation_results.py` <br/>
   **Small dataset**: `python3 run_eval_partial_ablation_results.py`<br/>
   _Output directories:_ `/home/dfly/ablation-results ` and `/home/dfly/ablation-partial-results `
+
+**Note**: please feel free to terminate the evaluation script at any point. And, be assured upon re-run it will resume from point of interruption
 
 ### Plotting results
 
