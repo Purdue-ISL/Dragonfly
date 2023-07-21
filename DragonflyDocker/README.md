@@ -64,7 +64,7 @@ To reproduce evaluation results from [our paper](https://doi.org/10.1145/3603269
   **Small dataset**: `python3 run_eval_partial_ablation_results.py`<br/>
   _Output directories:_ `/home/dfly/ablation-results ` and `/home/dfly/ablation-partial-results `
 
-**Note**: please feel free to terminate the evaluation script at any point. And, be assured upon re-run it will resume from point of interruption
+**Note**: please feel free to terminate the evaluation script at any point. And, be assured upon re-run it will resume from the point of interruption
 
 ### Plotting results
 
