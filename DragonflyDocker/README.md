@@ -52,9 +52,7 @@ This image includes:
 ## Build and Run Dragonfly
 
 ### Build dependencies and source code 
-Once you run the image, then:
-
-- Run `cd home/dfly && ./bash.sh` to (i) download and build all dependecies, and (ii) build Dragonfly code. Please note that **dfly password** is `1` (long live security bugs!!)
+Once inside the image shell, please run `cd home/dfly && ./bash.sh` to (i) download and build all dependecies, and (ii) build Dragonfly source code. Please note that **dfly password** is `1` (not well-protected ha!)
 
 ### Evaluate Dragonfly
 
