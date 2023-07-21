@@ -27,7 +27,7 @@ This image includes:
   ```
 - To **Run** the image, run the following command
   ```
-  docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly:0.1
+  docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly
   ```
   Couple of notes,
 
