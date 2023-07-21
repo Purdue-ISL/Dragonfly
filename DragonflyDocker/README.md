@@ -1,16 +1,29 @@
 # Dragonfly Image
 
-Docker image to build and evaluate Dragonfly video streaming system.
+Docker image to build and evaluate Dragonfly, a new 360º video streaming system.This accompanies the paper "Dragonfly: Higher Perceptual Quality For Continuous 360° Video Playback". Ehab Ghabashneh, Chandan Bothra, Ramesh Govindan, Antonio Ortega, and Sanjay Rao. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM ’23, New York, NY, USA. If you use this artifact, please cite: 
+
+```
+@inproceedings{Ghabashneh_Dragonfly_2023,
+  author    = {Ghabashneh, Ehab and Bothra, Chandan and Govindan, Ramesh and Ortega, Antonio and Rao, Sanjay},
+  title     = {Dragonfly: Higher Perceptual Quality For Continuous 360° Video Playback},
+  year      = {2023},
+  url       = {https://doi.org/10.1145/3603269.3604876},
+  doi       = {10.1145/3603269.3604876},
+  booktitle = {Proceedings of the ACM Special Interest Group on Data Communication},
+  series    = {SIGCOMM '23}
+}
+
+```
 
 ## Image info
 
 This image includes:
 
-- Dragonfly, Pano, Flare, Two Tier source codes.
+- Dragonfly, Pano, Flare, Two Tier source codes
 - 7 videos (tiled and pre-encoded into multiple qualities)
-- 30 User trajectories.
-- 21 Bandwidth traces.
-- Scripts to regenerate results from our SIGCOMM '23 paper.
+- 30 User trajectories
+- 21 Bandwidth traces
+- Scripts to regenerate results from our SIGCOMM '23 paper
 
 ## Prerequisite
 
@@ -21,7 +34,7 @@ This image includes:
 
 ## Download And Run The Image
 
-- To **Download** the latest Dragonfly image, run the command below or you can refer to [this dockerhub repo](https://hub.docker.com/r/eghabash/dfly/tags) to track/download old versions of the image.
+- To **Download** the latest Dragonfly image, run the command below or you can refer to [this dockerhub repo](https://hub.docker.com/r/eghabash/dfly/tags) to track/download old versions of the image
   ```
   docker pull eghabash/dfly
   ```
@@ -31,8 +44,8 @@ This image includes:
   ```
   Couple of notes,
 
-* If you are using remote linux machine, we recommend running the image inside [screen](https://linux.die.net/man/1/screen) shell.
-* In case of unresposive shell, you can run `docker exec -it <container-id> bash` to gain access back to docker's shell. To retrieve `<container-id>`, please run `docker ps` command.
+* If you are using remote linux machine, we recommend running the image inside [screen](https://linux.die.net/man/1/screen) shell
+* In case of unresposive shell, you can run `docker exec -it <container-id> bash` to gain access back to docker's shell. To retrieve `<container-id>`, please run `docker ps` command
 
 ## Build And Run Dragonfly
 
@@ -42,9 +55,9 @@ Once you run the image, then:
 
 ### Evaluate Dragonfly
 
-To reproduce evaluation results from [our paper](https://doi.org/10.1145/3603269.3604876), it takes more than a week of conducting experiements (175 hours to be precise). Therefore, we suggest first to evaluate with smaller sets of traces and users for which we provide the scripts.
+To reproduce evaluation results from [our paper](https://doi.org/10.1145/3603269.3604876), it takes more than a week of conducting experiements (175 hours to be precise). Therefore, we suggest first to evaluate with smaller sets of traces and users for which we provide the scripts
 
-**Caveat**: While the estimated experiment time for the smaller dataset is much less of approximately 6 hours, the outcome of this evaluation may not be an identical to these from the full dataset. Yet, we expect the patterns of both datasets to coincide.
+**Caveat**: While the estimated experiment time for the smaller dataset is much less of approximately 6 hours (i.e., <2 hours per major experiment below), the outcome of this evaluation may not be an identical to these from the full dataset. Yet, we expect the patterns of both datasets to coincide
 
 - To reproduce schemes comparison evaluation results [§4.3 Figure 9], please run:<br/>
   **Full dataset**: &ensp;&nbsp; `python3 run_eval_main_results.py` <br/>
@@ -88,7 +101,7 @@ We included python scripts to regenerate the figures from our evaluation section
   python3 Figure_13_b.py   ../ablation-partial-results/
   ```
 
-  **Output:** This will plot all figures following the paper numberings, and save them under the following directory
+  **Output:** This will plot all figures following the paper numberings, and save them under the following directory:
 
   ```
   /home/dfly/plot_figures_result_partial/figs_partial/Figure_<number>_partial.png
