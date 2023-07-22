@@ -1,4 +1,6 @@
-# Dragonfly Image
+# Dragonfly Image &ensp;[![doi](https://badgen.net/badge/DOI/10.1145%2F3603269.3604876/green)](https://doi.org/10.1145/3603269.3604876)
+ 
+
 
 Docker image to build and evaluate Dragonfly, a new 360º video streaming system.
 
