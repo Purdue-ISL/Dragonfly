@@ -33,23 +33,23 @@ This image includes:
 
 - Install Docker engine
   - For MACOSX users: run `brew cask install docker`
-  - For Ubuntu users: run `sudo apt install docker.io && sudo snap install docker`
+  - For Ubuntu users: run `sudo apt install docker.io`
   - For Windows users: please refer to [Docker documentation](https://docs.docker.com/desktop/install/windows-install/#install-docker-desktop-on-windows)
 
 ## Download and Run Docker Image
 
 - To **Download** the latest Dragonfly image, run the command below or you can refer to [this dockerhub repo](https://hub.docker.com/r/eghabash/dfly/tags) to track/download old versions of the image
   ```
-  docker pull eghabash/dfly
+  sudo docker pull eghabash/dfly
   ```
 - To **Run** the image, run the following command
   ```
-  docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly
+  sudo docker run --cap-add=NET_ADMIN --privileged  --device /dev/net/tun:/dev/net/tun -i -t eghabash/dfly
   ```
   Couple of notes,
 
 * If you are using remote linux machine, we recommend running the image inside [screen](https://linux.die.net/man/1/screen) shell
-* In case of unresposive shell, you can run `docker exec -it <container-id> bash` to gain access back to docker's shell. To retrieve `<container-id>`, please run `docker ps` command
+* In case of unresposive shell, you can run `sudo docker exec -it <container-id> bash` to gain access back to docker's shell. To retrieve `<container-id>`, please run `sudo docker ps` command
 
 ## Build and Run Dragonfly
 
