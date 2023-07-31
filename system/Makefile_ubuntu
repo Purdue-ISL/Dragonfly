@@ -1,0 +1,44 @@
+
+all: client server
+
+client: Client.o  Decoder.o VideoPlayer.o AbrAlgorithm.o BandwidthPredictor.o ClientNetworkLayer.o TilePredictor.o Util.o  LinearRegression.o
+	g++   -o ./build/client  ./build/AbrAlgorithm.o ./build/BandwidthPredictor.o ./build/Client.o ./build/ClientNetworkLayer.o ./build/Decoder.o ./build/TilePredictor.o ./build/VideoPlayer.o  ./build/Util.o  ./build/LinearRegression.o  -lfolly -lglog -lgflags -lavutil -lavformat -lavcodec -lswscale -lpthread  -lfmt -ldl -lboost_regex -lboost_system -ldouble-conversion
+
+server: Server.o
+	g++ -o ./build/server ./build/Server.o -lpthread -ldl -lfmt -lboost_regex -ldouble-conversion -lglog -lgflags -lboost_system
+
+Client.o: ./src/Client.cpp ./src/Client.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/Client.cpp -o ./build/Client.o
+
+Server.o: ./src/Server.cpp ./src/Server.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/Server.cpp -o ./build/Server.o
+
+Util.o: ./src/Util.cpp ./src/Util.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/Util.cpp -o ./build/Util.o
+
+Decoder.o: ./src/Decoder.cpp ./src/Decoder.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0  ./src/Decoder.cpp -o ./build/Decoder.o
+
+TilePredictor.o: ./src/TilePredictor.cpp ./src/TilePredictor.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/TilePredictor.cpp -o ./build/TilePredictor.o
+
+VideoPlayer.o: ./src/VideoPlayer.cpp ./src/VideoPlayer.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/VideoPlayer.cpp -o ./build/VideoPlayer.o
+
+AbrAlgorithm.o: ./src/AbrAlgorithm.cpp ./src/AbrAlgorithm.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/AbrAlgorithm.cpp -o ./build/AbrAlgorithm.o
+
+BandwidthPredictor.o: ./src/BandwidthPredictor.cpp ./src/BandwidthPredictor.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/BandwidthPredictor.cpp -o ./build/BandwidthPredictor.o
+
+ClientNetworkLayer.o: ./src/ClientNetworkLayer.cpp ./src/ClientNetworkLayer.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/ClientNetworkLayer.cpp -o ./build/ClientNetworkLayer.o
+
+LinearRegression.o: ./src/LinearRegression.cpp ./src/LinearRegression.h
+	g++ -std=c++14 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g -Wall -c -fmessage-length=0 ./src/LinearRegression.cpp -o ./build/LinearRegression.o
+
+clean:
+	rm ./build/*.o
+	rm ./build/client
+	rm ./build/server
+	rm *.yuv
