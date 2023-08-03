@@ -24,17 +24,18 @@ This accompanies the paper *"Dragonfly: Higher Perceptual Quality For Continuous
 This image includes:
 
 - Dragonfly, Pano, Flare, Two Tier source codes
-- 7 videos (tiled and pre-encoded into multiple qualities)
-- 30 User trajectories
-- 21 Bandwidth traces
+- 7 videos (tiled and pre-encoded into multiple qualities) [[1]](https://dl.acm.org/doi/abs/10.1145/3304109.3325812)
+- 30 User trajectories [[1]](https://dl.acm.org/doi/abs/10.1145/3304109.3325812)
+- 21 Bandwidth traces [[2]](https://ieeexplore.ieee.org/document/7546928)[[3]](https://dl.acm.org/doi/abs/10.1145/3339825.3394938)
 - Scripts to regenerate results from our SIGCOMM '23 paper
 
 ## Prerequisite
 
+- Linux OS based machine
 - Install Docker engine
   - For MACOSX users: run `brew cask install docker`
   - For Ubuntu users: run `sudo apt install docker.io`
-  - For Windows users: please refer to [Docker documentation](https://docs.docker.com/desktop/install/windows-install/#install-docker-desktop-on-windows)
+ 
 
 ## Download and Run Docker Image
 
@@ -118,6 +119,16 @@ We included python scripts to regenerate the figures from our evaluation section
   ```
   where `<container_id>` can be retrieved through `docker ps` command
 
+
+## References
+[1] Afshin Taghavi Nasrabadi, Aliehsan Samiei, Anahita Mahzari, Ryan P.McMahan, Ravi Prakash, Mylène C. Q. Farias, and Marcelo M. Carvalho. *A taxonomy and dataset for 360° videos*. In Proceedings of the 10th ACM Multimedia Systems Conference, MMSys ’19, page 273–278, Amherst, Massachusetts, 2019.
+
+[2] J. van der Hooft, S. Petrangeli, T. Wauters, R. Huysegems, P. R. Alface, T. Bostoen, and F. De Turck. *HTTP/2-Based Adaptive Streaming of HEVC Video Over 4G/LTE Networks*. IEEE Communications Letters, 20(11):2177–2180, 2016.
+
+[3] Darijo Raca, Dylan Leahy, Cormac J. Sreenan, and Jason J. Quinlan. *Beyond
+throughput, the next generation: A 5g dataset with channel and context metrics*. In Proceedings of the 11th ACM Multimedia Systems Conference, MMSys ’20, page 303–308, Istanbul, Turkey, 2020.
+
 ## Contact
 
 For inquiries, please feel free to reach out to [Ehab Ghabashneh](mailto:eghabash@purdue.edu)
+
