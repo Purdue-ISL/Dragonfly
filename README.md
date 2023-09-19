@@ -49,7 +49,7 @@ add-apt-repository ppa:jonathonf/ffmpeg-4
 apt-get install -y  ffmpeg  libgflags-dev libgoogle-glog-dev libboost-all-dev libavcodec-dev libavformat-dev libswscale-dev libdouble-conversion-dev libfmt-dev libevent-dev libssl-dev cmake  mahimahi
 ```
 
-#### fmt & folly libraries, please use the versions in the third-party-lib dir
+For `fmt & folly` libraries, please use the versions in the third-party-lib dir.
 - Install **fmt**:
   ```
   cd ~/Dragonfly/third-party-lib/fmt && mkdir build && cd build && cmake .. && make -j2 && make install
