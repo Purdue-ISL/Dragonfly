@@ -44,21 +44,26 @@ This accompanies the paper *"Dragonfly: Higher Perceptual Quality For Continuous
 ### Install Prerequisites
 Please refer to our `bash.sh` script, or follow the commands below:
 ```
-apt-get install gcc-9 g++-9 -y  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9 
+apt-get update  && apt-get install build-essential software-properties-common -y  && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update  && apt-get install gcc-9 g++-9 -y  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
 add-apt-repository ppa:jonathonf/ffmpeg-4
-apt-get install -y ffmpeg  libgflags-dev libgoogle-glog-dev libboost-all-dev libavcodec-dev libavformat-dev libswscale-dev libdouble-conversion-dev libfmt-dev libevent-dev libssl-dev cmake mahimahi
+apt-get install -y  ffmpeg  libgflags-dev libgoogle-glog-dev libboost-all-dev libavcodec-dev libavformat-dev libswscale-dev libdouble-conversion-dev libfmt-dev libevent-dev libssl-dev cmake  mahimahi
 ```
 
 #### fmt & folly libraries, please use the versions in the third-party-lib dir
-Install fmt --> `cd ~/Dragonfly/third-party-lib/fmt && mkdir build && cd build && cmake .. && make -j2 && make install`
+- Install **fmt**:
+  ```
+  cd ~/Dragonfly/third-party-lib/fmt && mkdir build && cd build && cmake .. && make -j2 && make install
+  ```
 
-Install folly --> `cd ~/Dragonfly/third-party-lib/folly-2021.03.15.00 && mkdir _build && cd _build && cmake .. && make -j2 && make install`
+- Install **folly**:
+  ```
+  cd ~/Dragonfly/third-party-lib/folly-2021.03.15.00 && mkdir _build && cd _build && cmake .. && make -j2 && make install
+  ```
 
 ### Build Dragonfly
 Dragonfly source code resides in the system directory. To build Dragonfly,
 ```
-cd system && mkdir build
-make -f Makefile_ubuntu
+cd system && mkdir build && make -f Makefile_ubuntu
 ```
 
 
