@@ -34,7 +34,7 @@ This image includes:
 - Linux OS based machine
 - Install Docker engine
   - For MACOSX users: run `brew cask install docker`
-  - For Ubuntu users: run `sudo apt install docker.io`
+  - For Ubuntu users: run `sudo apt-get update && sudo apt install docker.io`
  
 
 ## Download and Run Docker Image
