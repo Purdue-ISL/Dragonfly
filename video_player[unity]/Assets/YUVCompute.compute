@@ -1,0 +1,122 @@
+#pragma kernel YUVtoRGBA
+#pragma kernel YUVtoRGBB
+#pragma kernel YUVtoRGBC
+#pragma kernel YUVtoRGBD
+
+StructuredBuffer<uint> ByteBuffer;
+StructuredBuffer<int> UVBufferA;
+StructuredBuffer<int> UVBufferB;
+StructuredBuffer<int> UVBufferC;
+StructuredBuffer<int> UVBufferD;
+StructuredBuffer<int> UVBuffer;
+RWTexture2D<float4> Result;
+
+uint w, h;
+uint Ysize;
+uint UorVsize;
+uint m_w, m_h;
+uint left, right, top, bottom;
+
+[numthreads(8,8,1)]
+void YUVtoRGBA (uint3 id : SV_DispatchThreadID)
+{
+    UVBuffer = UVBufferA;
+    int lookup_x = ((id.x > left) * (id.x < right) * (id.x - left)) + ((id.x > left) * (right < left) * (id.x - left)) + ((id.x < right) * (right < left) * ((3839 - left) + id.x));
+    int lookup_y = ((id.y > top) * (id.y < bottom) * (id.y - top)) + ((id.y > top) * (top > bottom) * (id.y - top)) + ((id.y < bottom) * (top > bottom) * (1919 - top + id.y));
+
+    uint Offset = UVBuffer[lookup_y * m_w + lookup_x];
+
+    int U = ((ByteBuffer[(Ysize + Offset)/4] >> (8 * ((Ysize + Offset) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+    int V = ((ByteBuffer[(Ysize + Offset + UorVsize)/4] >> (8 * ((Ysize + Offset + UorVsize) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+        
+    uint i = (lookup_y * m_w + lookup_x) * (lookup_x > 0) * (lookup_y > 0);
+    uint mY = h - 1 - id.y;
+    
+    int Y00 = ((ByteBuffer[(i)/4] >> (8 * ((i) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0); // Upper Left
+
+    
+    float R00 = ((Y00 + 1.4075f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float G00 = ((Y00 - 0.3455f * (U - 128) - 0.7169f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float B00 = ((Y00 + 1.779f * (U - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+
+    
+    Result[uint2(id.x, mY)] = float4(R00, G00, B00, 1);
+}
+
+[numthreads(8,8,1)]
+void YUVtoRGBB (uint3 id : SV_DispatchThreadID)
+{
+    UVBuffer = UVBufferB;
+    int lookup_x = ((id.x > left) * (id.x < right) * (id.x - left)) + ((id.x > left) * (right < left) * (id.x - left)) + ((id.x < right) * (right < left) * ((3839 - left) + id.x));
+    int lookup_y = ((id.y > top) * (id.y < bottom) * (id.y - top)) + ((id.y > top) * (top > bottom) * (id.y - top)) + ((id.y < bottom) * (top > bottom) * (1919 - top + id.y));
+
+    uint Offset = UVBuffer[lookup_y * m_w + lookup_x];
+
+    int U = ((ByteBuffer[(Ysize + Offset)/4] >> (8 * ((Ysize + Offset) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+    int V = ((ByteBuffer[(Ysize + Offset + UorVsize)/4] >> (8 * ((Ysize + Offset + UorVsize) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+        
+    uint i = (lookup_y * m_w + lookup_x) * (lookup_x > 0) * (lookup_y > 0);
+    uint mY = h - 1 - id.y;
+    
+    int Y00 = ((ByteBuffer[(i)/4] >> (8 * ((i) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0); // Upper Left
+
+    
+    float R00 = ((Y00 + 1.4075f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float G00 = ((Y00 - 0.3455f * (U - 128) - 0.7169f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float B00 = ((Y00 + 1.779f * (U - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+
+    
+    Result[uint2(id.x, mY)] = float4(R00, G00, B00, 1);
+}
+
+[numthreads(8,8,1)]
+void YUVtoRGBC (uint3 id : SV_DispatchThreadID)
+{
+    UVBuffer = UVBufferC;
+    int lookup_x = ((id.x > left) * (id.x < right) * (id.x - left)) + ((id.x > left) * (right < left) * (id.x - left)) + ((id.x < right) * (right < left) * ((3839 - left) + id.x));
+    int lookup_y = ((id.y > top) * (id.y < bottom) * (id.y - top)) + ((id.y > top) * (top > bottom) * (id.y - top)) + ((id.y < bottom) * (top > bottom) * (1919 - top + id.y));
+
+    uint Offset = UVBuffer[lookup_y * m_w + lookup_x];
+
+    int U = ((ByteBuffer[(Ysize + Offset)/4] >> (8 * ((Ysize + Offset) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+    int V = ((ByteBuffer[(Ysize + Offset + UorVsize)/4] >> (8 * ((Ysize + Offset + UorVsize) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+        
+    uint i = (lookup_y * m_w + lookup_x) * (lookup_x > 0) * (lookup_y > 0);
+    uint mY = h - 1 - id.y;
+    
+    int Y00 = ((ByteBuffer[(i)/4] >> (8 * ((i) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0); // Upper Left
+
+    
+    float R00 = ((Y00 + 1.4075f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float G00 = ((Y00 - 0.3455f * (U - 128) - 0.7169f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float B00 = ((Y00 + 1.779f * (U - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+
+    
+    Result[uint2(id.x, mY)] = float4(R00, G00, B00, 1);
+}
+
+[numthreads(8,8,1)]
+void YUVtoRGBD (uint3 id : SV_DispatchThreadID)
+{
+    UVBuffer = UVBufferD;
+    int lookup_x = ((id.x > left) * (id.x < right) * (id.x - left)) + ((id.x > left) * (right < left) * (id.x - left)) + ((id.x < right) * (right < left) * ((3839 - left) + id.x));
+    int lookup_y = ((id.y > top) * (id.y < bottom) * (id.y - top)) + ((id.y > top) * (top > bottom) * (id.y - top)) + ((id.y < bottom) * (top > bottom) * (1919 - top + id.y));
+
+    uint Offset = UVBuffer[lookup_y * m_w + lookup_x];
+
+    int U = ((ByteBuffer[(Ysize + Offset)/4] >> (8 * ((Ysize + Offset) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+    int V = ((ByteBuffer[(Ysize + Offset + UorVsize)/4] >> (8 * ((Ysize + Offset + UorVsize) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0);
+        
+    uint i = (lookup_y * m_w + lookup_x) * (lookup_x > 0) * (lookup_y > 0);
+    uint mY = h - 1 - id.y;
+    
+    int Y00 = ((ByteBuffer[(i)/4] >> (8 * ((i) % 4))) & 0xff) * (lookup_x > 0) * (lookup_y > 0); // Upper Left
+
+    
+    float R00 = ((Y00 + 1.4075f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float G00 = ((Y00 - 0.3455f * (U - 128) - 0.7169f * (V - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+    float B00 = ((Y00 + 1.779f * (U - 128)) / 255.0f) * (lookup_x > 0) * (lookup_y > 0) * (lookup_x < 1600) * (lookup_y < 1280);
+
+    
+    Result[uint2(id.x, mY)] = float4(R00, G00, B00, 1);
+}
